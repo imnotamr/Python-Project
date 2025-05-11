@@ -238,17 +238,11 @@ async def predict(file: UploadFile = File(...)):
         "recommendation": info["recommendation"],
         "treatment": info["treatment"],
         "reason": info["reason"],
-        "heatmap_image_url": f"/{cam_filename}"
-
+        "heatmap_image_url": f"http://127.0.0.1:8000/{cam_filename}"
     }
 
     return report
 
 if __name__ == "__main__":
-    import os
     import uvicorn
-    uvicorn.run("app:app", host="127.0.0.1", port=8000)
-
-
-
-
+    uvicorn.run("app:app", host="127.0.0.1", port=8000, reload=True)
